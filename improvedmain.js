@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
   if(req.session.users.length === 0 || req.session.users.length === !1){
     res.redirect('/login')
   } else {
-    res.render('home', {userHello: req.session.users})
+    res.render('home', {userHello : req.session.users})
   }
 })
 
@@ -63,6 +63,11 @@ for(let i = 0; i< userData.length; i++){
   }
 }
 res.redirect('/')
+})
+
+app.post('/logout',(req, res) => {
+  req.session.users.length = [];
+  res.redirect('/')
 })
 
 app.listen(3000, function() {
